@@ -92,15 +92,7 @@ namespace DotnetIteration
 
     public static bool EveryoneIsOdd(List<int> data)
     {
-      var flag = true;
-      foreach (int num in data)
-      {
-        if (num % 2 == 0)
-        {
-          flag = false;
-        }
-      }
-      return flag;
+      return data.All(data => data % 2 != 0);
     }
     /*
       * 8) Define a function findTheNeedle that accepts an list of
@@ -109,8 +101,7 @@ namespace DotnetIteration
       */
     public static string FindTheNeedle(List<string> data)
     {
-      var arr = data.Where((data) => data.Contains("needle"));
-      return arr.First();
+      return data.Where((data) => data.Contains("needle")).FirstOrDefault();
     }
 
 
@@ -122,16 +113,7 @@ namespace DotnetIteration
 
     public static int FindTheNeedleIndex(List<string> data)
     {
-
-      int x = 0;
-      for (int i = 0; i < data.Count; i++)
-      {
-          if (data[i].Contains("needle")) {
-            x = i;
-          }
-      }
-      return x;
-
+      return data.FindIndex(item => item.Contains("needle"));
     }
 
     /*
@@ -143,15 +125,7 @@ namespace DotnetIteration
 
     public static bool SomeoneToLove(List<string> data)
     {
-      var flag = false;
-      foreach (var item in data)
-      {
-        if (item.Length == 4)
-        {
-          flag = true;
-        }
-      }
-      return flag;
+      return data.Any(data => data.Length == 4);
     }
   }
 
